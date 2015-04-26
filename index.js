@@ -3,7 +3,7 @@ var sys = require('sys');
 var exec = require('child_process').exec;
 
 var puts = function(error, stdout, stderr) { 
-  if (stderr){
+  if (stderr) {
     sys.puts(stderr);
     return;
   } 
