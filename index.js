@@ -1,9 +1,13 @@
 var request = require('request-promise');
-var sys = require('sys')
+var sys = require('sys');
 var exec = require('child_process').exec;
 
 var puts = function(error, stdout, stderr) { 
-  sys.puts(stdout) 
+  if (stderr){
+    sys.puts(stderr);
+    return;
+  } 
+  sys.puts(stdout);
 };
 
 var shaGenerate = function(user) {
@@ -11,7 +15,7 @@ var shaGenerate = function(user) {
 };
 
 var generatePassword = function(user) {
-  if (user && user.roles && user.roles.length != 0) {
+  if (user && user.roles && user.roles.length !== 0) {
     var userName = user.name.replace(/\s/g, '');
     var userPass = shaGenerate(user);
     var commandToDo = "--user=" + userName + " --password=" + userPass;
