@@ -6,12 +6,12 @@ var puts = function(error, stdout, stderr) {
   if (stderr) {
     sys.puts(stderr);
     return;
-  } 
+  }
   sys.puts(stdout);
 };
 
 var shaGenerate = function(user) {
-  return sha1(sha1(sha1(user.id), sha1(user.facebookId)), sha1(user.created))
+  return sha1(sha1(sha1(user.id), sha1(user.facebookId)), sha1(user.created));
 };
 
 var generatePassword = function(user) {
